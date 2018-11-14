@@ -16,8 +16,11 @@
         <!-- src:是插件里存放对应.java的路径， target-dir:安装插件时把.java文件存放的位置，要和上面的value路径对应 -->
         <source-file src="src/android/ThirdLogin.java" target-dir="src/com/microduino/mDesigner" />
 
+
         <hook type="after_plugin_install" src="scripts/android_after_plugin_install.js" />
         <!-- ShareSDK Sources -->
+        <source-file src="src/android/ShareSDK/src/com/microduino/mdesigner/wxapi/WXEntryActivity.java"
+                     target-dir="java/com/microduino/mDesigner/wxapi" />
         <source-file src="src/android/ShareSDK/assets/ShareSDK.xml" target-dir="assets" />
         <source-file src="src/android/ShareSDK/src/cn/sharesdk/onekeyshare" target-dir="java/cn/sharesdk" />
         <source-file src="src/android/ShareSDK/res/values/ssdk_instapaper_strings.xml" target-dir="res/values" />

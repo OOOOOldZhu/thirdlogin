@@ -19,7 +19,7 @@ module.exports = function(context) {
             if (!exists) fs.mkdir(wxapiPath);
 
             fs.exists(WXEntryActivityPath, function(fexists) {
-                if (fexists) console.warn(WXEntryActivityPath + ' is exists, Not be replaced.');
+                if (fexists) console.error(WXEntryActivityPath + ' is exists, Not be replaced.');
                 else {
                     fs.writeFile(WXEntryActivityPath, result, 'utf8', function(err) {
                         if (err) throw err;
