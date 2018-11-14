@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OOOOOldZhu/cordova-plugin-thirdlogin.git"
+    "url": "git+https://github.com/OOOOOldZhu/thirdlogin.git"
   },
   "keywords": [
     "cordova",
@@ -17,7 +17,7 @@
   "author": "z",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/OOOOOldZhu/cordova-plugin-thirdlogin/issues"
+    "url": "https://github.com/OOOOOldZhu/thirdlogin/issues"
   },
-  "homepage": "https://github.com/OOOOOldZhu/cordova-plugin-thirdlogin#readme"
+  "homepage": "https://github.com/OOOOOldZhu/thirdlogin#readme"
 }
