@@ -1,0 +1,23 @@
+{
+  "name": "thirdlogin",
+  "version": "1.0.1",
+  "description": "shareSDk cordova",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OOOOOldZhu/cordova-plugin-thirdlogin.git"
+  },
+  "keywords": [
+    "cordova",
+    "shareSDK"
+  ],
+  "author": "z",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OOOOOldZhu/cordova-plugin-thirdlogin/issues"
+  },
+  "homepage": "https://github.com/OOOOOldZhu/cordova-plugin-thirdlogin#readme"
+}
