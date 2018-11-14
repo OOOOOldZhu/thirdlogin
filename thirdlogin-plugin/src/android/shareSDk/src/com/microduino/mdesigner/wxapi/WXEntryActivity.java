@@ -6,7 +6,7 @@
  * Copyright (c) 2013年 mob.com. All rights reserved.
  */
 
-package com.microduino.mdesigner.wxapi;
+package com.microduino.mDesigner.wxapi;
 
 import android.content.Intent;
 import android.widget.Toast;

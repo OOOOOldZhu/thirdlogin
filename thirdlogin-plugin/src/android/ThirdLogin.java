@@ -36,11 +36,11 @@ public class ThirdLogin extends CordovaPlugin {
     }
 
     private void doLogin(String loginType, CallbackContext callbackContext) {
-        Platform platform = null;
+        Platform  platform = ShareSDK.getPlatform(SinaWeibo.NAME);
         if (loginType.equalsIgnoreCase("facebook")) {
             platform = ShareSDK.getPlatform(Facebook.NAME);
         } else if (loginType.equalsIgnoreCase("weibo")) {
-            platform = ShareSDK.getPlatform(SinaWeibo.NAME);
+            //platform = ShareSDK.getPlatform(SinaWeibo.NAME);
         } else if (loginType.equalsIgnoreCase("twitter")) {
             platform = ShareSDK.getPlatform(Twitter.NAME);
         } else if (loginType.equalsIgnoreCase("wechat")) {
