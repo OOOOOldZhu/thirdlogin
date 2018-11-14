@@ -15,5 +15,61 @@
         </config-file>
         <!-- src:是插件里存放对应.java的路径， target-dir:安装插件时把.java文件存放的位置，要和上面的value路径对应 -->
         <source-file src="src/android/ThirdLogin.java" target-dir="src/com/microduino/mDesigner" />
+
+        <hook type="after_plugin_install" src="scripts/android_after_plugin_install.js" />
+        <!-- ShareSDK Sources -->
+        <source-file src="src/android/ShareSDK/assets/ShareSDK.xml" target-dir="assets" />
+        <source-file src="src/android/ShareSDK/src/cn/sharesdk/onekeyshare" target-dir="java/cn/sharesdk" />
+        <source-file src="src/android/ShareSDK/res/values/ssdk_instapaper_strings.xml" target-dir="res/values" />
+        <source-file src="src/android/ShareSDK/res/values/ssdk_oks_color_drawables.xml" target-dir="res/values" />
+        <source-file src="src/android/ShareSDK/res/values/ssdk_oks_strings.xml" target-dir="res/values" />
+        <source-file src="src/android/ShareSDK/res/values/ssdk_strings.xml" target-dir="res/values" />
+        <!-- ShareSDK Libs -->
+        <lib-file src="src/android/ShareSDK/libs/MobCommons-2018.1011.1129.jar" />
+        <lib-file src="src/android/ShareSDK/libs/MobTools-2018.1009.1056.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-Core-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-Facebook-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-FacebookMessenger-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-GooglePlus-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-Instagram-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-Kakao-Core-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-KakaoTalk-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-QQ-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-QZone-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-SinaWeibo-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-Twitter-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-Wechat-Core-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-Wechat-Favorite-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-Wechat-Moments-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-WhatsApp-3.3.0.jar" />
+        <lib-file src="src/android/ShareSDK/libs/ShareSDK-Youtube-3.3.0.jar" />
+        <!--添加权限-->
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.GET_TASKS" />
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+            <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+            <uses-permission android:name="android.permission.BLUETOOTH" />
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.mob.tools.MobUIShell" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="keyboardHidden|orientation|screenSize" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden|adjustResize">
+                <!-- 调用新浪原生SDK，需要注册的回调activity -->
+                <intent-filter>
+                    <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                </intent-filter>
+            </activity>
+            <!--微信分享回调 WXEntryActivity是相对路径，所以需要获取当前项目的包名，动态copy到指定目录。通过cordova的hook完成-->
+            <activity android:name=".wxapi.WXEntryActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:screenOrientation="portrait" />
+            <meta-data android:name="Mob-AppKey" android:value="28c038beb20d6"/>
+            <meta-data android:name="Mob-AppSecret" android:value="e1d6dd766e21ac7fbdd25b91efd5f712"/>
+        </config-file>
     </platform>
 </plugin>
