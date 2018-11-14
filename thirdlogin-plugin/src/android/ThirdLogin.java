@@ -2,6 +2,8 @@ package com.microduino.mDesigner;
 
 import org.apache.cordova.CordovaPlugin;
 
+import android.os.Message;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.apache.cordova.CallbackContext;
@@ -10,6 +12,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONException;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import cn.sharesdk.facebook.Facebook;
 import cn.sharesdk.framework.Platform;
@@ -22,6 +25,7 @@ import cn.sharesdk.wechat.moments.WechatMoments;
 /*
  * ：Created by z on 2018/11/14
  */
+
 public class ThirdLogin extends CordovaPlugin {
 
     @Override
@@ -51,22 +55,30 @@ public class ThirdLogin extends CordovaPlugin {
             platform.setPlatformActionListener(new PlatformActionListener() {
 
                 @Override
-                public void onError(Platform arg0, int arg1, Throwable arg2) {
-                    // TODO Auto-generated method stub
-                    arg2.printStackTrace();
-                }
-
-                @Override
-                public void onComplete(Platform arg0, int arg1, HashMap<String, Object> arg2) {
-                    // TODO Auto-generated method stub
+                public void onComplete(Platform platform, int action, HashMap<String, Object> resp) {
                     //输出所有授权信息
-                    arg0.getDb().exportData();
+                    //platform.getDb().exportData();
+                    if (action == Platform.ACTION_AUTHORIZING) {
+                        String json = platform.getDb().exportData();
+                        Log.i("zhu", "onComplete: "+json);
+                        callbackContext.success(json);
+                    }
                 }
 
                 @Override
-                public void onCancel(Platform arg0, int arg1) {
-                    // TODO Auto-generated method stub
+                public void onError(Platform platform, int action, Throwable throwable) {
+                    if (action == Platform.ACTION_AUTHORIZING) {
+                        Log.i("zhu", "onError: "+throwable.getMessage());
+                        callbackContext.error(throwable.getMessage());
+                    }
+                }
 
+                @Override
+                public void onCancel(Platform platform, int action) {
+                    if (action == Platform.ACTION_AUTHORIZING) {
+                        Log.i("zhu", "onCancel: ");
+                        callbackContext.error("0");
+                    }
                 }
             });
             //authorize与showUser单独调用一个即可
