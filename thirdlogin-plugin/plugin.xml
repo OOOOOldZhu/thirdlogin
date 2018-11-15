@@ -85,11 +85,53 @@
         </config-file>
         <header-file src="src/ios/ThirdLogin.h" />
         <source-file src="src/ios/ThirdLogin.m" />
+        <!-- ShareSDK -->
+        <framework src="src/ios/shareSDk/Required/MOBFoundation.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/ShareSDK.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/Optional/ShareSDKExtension.framework" custom="true" />
+        <resource-file src="src/ios/shareSDK//ShareSDK/Support/Optional/ShareSDKUI.bundle" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/Optional/ShareSDKUI.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/Required/ShareSDKConnector.framework" custom="true" />
+        <resource-file src="src/ios/shareSDK//ShareSDK/Support/Required/ShareSDK.bundle" />
         <!-- Other required frameworks -->
         <framework src="libicucore.tbd" />
         <framework src="libz.tbd" />
         <framework src="libstdc++.tbd" />
         <framework src="JavaScriptCore.framework" />
+        <!-- Wechat and QQ friend Zone and sina required frameworks -->
+        <framework src="libsqlite3.tbd" />
+        <!-- sina required frameworks -->
+        <framework src="ImageIO.framework" />
+        <!-- Wechat Official -->
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/WechatConnector.framework" custom="true" />
+        <source-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/WeChatSDK/libWeChatSDK.a" framework="true" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/WeChatSDK/WXApi.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/WeChatSDK/WXApiObject.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/WeChatSDK/WechatAuthSDK.h" />
+        <!-- Sina Weibo Official -->
+        <resource-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/SinaWeiboConnector.framework" custom="true" />
+        <source-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/libWeiboSDK.a" framework="true" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboGame.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboShare.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboToken.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboUser.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKBasicButton.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKCommentButton.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKRelationshipButton.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK+Statistics.h" />
+        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboUser.h" />
+        <!-- QQ Official -->
+        <resource-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenApi_IOS_Bundle.bundle" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/QQConnector.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenAPI.framework" custom="true" />
+        <!--facebook-->
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/FacebookConnector.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/FacebookMessengerConnector.framework" custom="true" />
+        <!--twitter-->
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/TwitterConnector.framework" custom="true" />
     </platform>
 
 </plugin>
