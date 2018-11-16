@@ -36,6 +36,10 @@ public class ThirdLogin extends CordovaPlugin {
             doLogin(args.getString(0), callbackContext);
             return true;
         }
+        if ("initSDK".equals(action)) {
+
+            return true;
+        }
         return false;
     }
 

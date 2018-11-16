@@ -7,3 +7,6 @@ var exec = require('cordova/exec');
 exports.doLogin = function (arg0, success, error) {
     exec(success, error, 'ThirdLogin', 'doLogin', [arg0]);
 };
+exports.initSDK = function (arg0, success, error) {
+    exec(success, error, 'ThirdLogin', 'initSDK', [arg0]);
+};

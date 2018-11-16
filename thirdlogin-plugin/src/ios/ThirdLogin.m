@@ -11,10 +11,13 @@
 #import <MOBFoundation/MobSDK.h>
 
 @implementation ThirdLogin
-- (void)doLogin:(CDVInvokedUrlCommand*)args
+- (void)initSDK:(CDVInvokedUrlCommand*)args
 {
     [self registSDKAppkey];
     [self registPlatforms];
+}
+- (void)doLogin:(CDVInvokedUrlCommand*)args
+{
     [self getUserBySDK:args];
 }
 
