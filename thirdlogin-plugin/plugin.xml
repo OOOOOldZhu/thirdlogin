@@ -85,6 +85,43 @@
         </config-file>
         <header-file src="src/ios/ThirdLogin.h" />
         <source-file src="src/ios/ThirdLogin.m" />
+        <!--添加Scheme白名单 reference url http://wiki.mob.com/ios9-%E5%AF%B9sharesdk%E7%9A%84%E5%BD%B1%E5%93%8D%EF%BC%88%E9%80%82%E9%85%8Dios-9%E5%BF%85%E8%AF%BB%EF%BC%89/-->
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <!--wechat-->
+                <string>weixin</string>
+                <string>wechat</string>
+                <!--sina weibo-->
+                <string>sinaweibo</string>
+                <string>sinaweibohd</string>
+                <string>sinaweibosso</string>
+                <string>sinaweibohdsso</string>
+                <string>weibosdk</string>
+                <string>weibosdk2.5</string>
+                <!--qq friend-->
+                <string>mqqOpensdkSSoLogin</string>
+                <string>mqqopensdkapiV2</string>
+                <string>mqqopensdkapiV3</string>
+                <string>wtloginmqq2</string>
+                <string>mqq</string>
+                <string>mqqapi</string>
+            </array>
+        </config-file>
+        <!--配置URL Scheme reference http://bbs.mob.com/thread-567-1-1.html-->
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>CFBundleURLName</key>
+                    <string></string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>$WECHAT_APP_ID</string>
+                        <string>wb$WEIBO_APP_ID</string>
+                        <string>QQ$QQ_IOS_APP_HEX_ID</string>
+                    </array>
+                </dict>
+            </array>
+        </config-file>
         <!-- ShareSDK -->
         <framework src="src/ios/shareSDk/Required/MOBFoundation.framework" custom="true" />
         <framework src="src/ios/shareSDK/ShareSDK/ShareSDK.framework" custom="true" />
@@ -113,18 +150,8 @@
         <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/SinaWeiboConnector.framework" custom="true" />
         <source-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/libWeiboSDK.a" framework="true" />
         <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest.h" />
-        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboGame.h" />
-        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboShare.h" />
-        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboToken.h" />
-        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest+WeiboUser.h" />
-        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKBasicButton.h" />
-        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKCommentButton.h" />
-        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBSDKRelationshipButton.h" />
         <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.h" />
-        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK+Statistics.h" />
-        <header-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboUser.h" />
         <!-- QQ Official -->
-        <resource-file src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenApi_IOS_Bundle.bundle" />
         <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/QQConnector.framework" custom="true" />
         <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenAPI.framework" custom="true" />
         <!--facebook-->
