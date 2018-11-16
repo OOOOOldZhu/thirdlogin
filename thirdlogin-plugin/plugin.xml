@@ -115,9 +115,10 @@
                     <string></string>
                     <key>CFBundleURLSchemes</key>
                     <array>
-                        <string>$WECHAT_APP_ID</string>
-                        <string>wb$WEIBO_APP_ID</string>
-                        <string>QQ$QQ_IOS_APP_HEX_ID</string>
+                        <string>wb206863495</string>
+                        <string>wx70ae63195d951329</string>
+                        <string>fb107704292745179</string>
+                        <string>twitterkit-wGeZVOFRlt1YTyIBan2RSeK4e</string>
                     </array>
                 </dict>
             </array>

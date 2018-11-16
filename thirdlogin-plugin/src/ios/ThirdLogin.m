@@ -15,9 +15,7 @@
 {
     [self registSDKAppkey];
     [self registPlatforms];
-
     [self getUserBySDK:args];
-
 }
 
 -(void)getUserBySDK:(CDVInvokedUrlCommand*)args{
@@ -49,7 +47,8 @@
              }
          }];
     }
-    [self.commandDelegate sendPluginResult:nil callbackId:nil];
+
+    [self.commandDelegate sendPluginResult:nil callbackId:args.callbackId];
 }
 -(void)registSDKAppkey{
     [MobSDK registerAppKey:@"28c038beb20d6" appSecret:@"e1d6dd766e21ac7fbdd25b91efd5f712"];
@@ -61,10 +60,10 @@
         [platformsRegister setupQQWithAppId:@"100371282" appkey:@"aed9b0303e3ed1e27bae87c33761161d"];
 
         //微信
-        [platformsRegister setupWeChatWithAppId:@"wx617c77c82218ea2c" appSecret:@"c7253e5289986cf4c4c74d1ccc185fb1"];
+        [platformsRegister setupWeChatWithAppId:@"wx70ae63195d951329" appSecret:@"ea3431d950273750906fe3314b247fc8"];
 
         //新浪
-        [platformsRegister setupSinaWeiboWithAppkey:@"568898243" appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3" redirectUrl:@"http://www.sharesdk.cn"];
+        [platformsRegister setupSinaWeiboWithAppkey:@"206863495" appSecret:@"d64b22765519e722030f332d7f825ef5" redirectUrl:@"https://www.microduino.cn/3rd/weibo/callback"];
 
         //Facebook
         [platformsRegister setupFacebookWithAppkey:@"1412473428822331" appSecret:@"a42f4f3f867dc947b9ed6020c2e93558" displayName:@"shareSDK"];
