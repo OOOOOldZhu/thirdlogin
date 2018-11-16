@@ -16,6 +16,11 @@
     [self registSDKAppkey];
     [self registPlatforms];
 
+    [self getUserBySDK:args];
+
+}
+
+-(void)getUserBySDK:(CDVInvokedUrlCommand*)args{
     CDVPluginResult* pluginResult = nil;
     NSString* echo =[args.arguments objectAtIndex:0];
     SSDKPlatformType platformType;
@@ -45,27 +50,6 @@
          }];
     }
     [self.commandDelegate sendPluginResult:nil callbackId:nil];
-
-}
--(void)getUserBySDK{
-    [ShareSDK getUserInfo:SSDKPlatformTypeQQ
-           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
-     {
-         if (state == SSDKResponseStateSuccess)
-         {
-
-             NSLog(@"uid=%@",user.uid);
-             NSLog(@"%@",user.credential);
-             NSLog(@"token=%@",user.credential.token);
-             NSLog(@"nickname=%@",user.nickname);
-         }
-
-         else
-         {
-             NSLog(@"%@",error);
-         }
-
-     }];
 }
 -(void)registSDKAppkey{
     [MobSDK registerAppKey:@"28c038beb20d6" appSecret:@"e1d6dd766e21ac7fbdd25b91efd5f712"];

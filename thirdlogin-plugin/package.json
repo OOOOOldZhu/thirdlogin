@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/OOOOOldZhu/thirdlogin/issues"
   },
-  "homepage": "https://github.com/OOOOOldZhu/thirdlogin#readme"
+  "homepage": "https://github.com/OOOOOldZhu/thirdlogin#readme",
+  "keywords": [
+    "cordova",
+    "sharesdk"
+  ]
 }
