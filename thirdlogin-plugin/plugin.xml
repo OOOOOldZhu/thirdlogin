@@ -81,6 +81,7 @@
             <feature name="ThirdLogin">
                 <!--ThirdLogin的路径-->
                 <param name="ios-package" value="ThirdLogin"/>
+                <param name="onload" value="true" />
             </feature>
         </config-file>
         <header-file src="src/ios/ThirdLogin.h" />

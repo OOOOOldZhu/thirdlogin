@@ -8,10 +8,12 @@
 #import "ThirdLogin.h"
 #import <Cordova/CDVPlugin.h>
 #import <ShareSDK/ShareSDK.h>
+#import <MOBFoundation/MobSDK.h>
 
 @implementation ThirdLogin
 - (void)doLogin:(CDVInvokedUrlCommand*)args
 {
+    [self registSDKAppkey];
     [self registPlatforms];
 
     CDVPluginResult* pluginResult = nil;
@@ -64,6 +66,9 @@
          }
 
      }];
+}
+-(void)registSDKAppkey{
+    [MobSDK registerAppKey:@"28c038beb20d6" appSecret:@"e1d6dd766e21ac7fbdd25b91efd5f712"];
 }
 -(void)registPlatforms {
 
