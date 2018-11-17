@@ -77,6 +77,7 @@
     </platform>
 
     <platform name="ios">
+        <hook type="after_platform_add" src="scripts/fix_openurl_callback.js"/>
         <config-file target="config.xml" parent="/*">
             <feature name="ThirdLogin">
                 <!--ThirdLogin的路径-->
@@ -88,36 +89,67 @@
         <!--添加Scheme白名单 reference url http://wiki.mob.com/ios9-%E5%AF%B9sharesdk%E7%9A%84%E5%BD%B1%E5%93%8D%EF%BC%88%E9%80%82%E9%85%8Dios-9%E5%BF%85%E8%AF%BB%EF%BC%89/-->
         <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
             <array>
-                <!--wechat-->
                 <string>weixin</string>
                 <string>wechat</string>
-                <!--sina weibo-->
-                <string>sinaweibo</string>
-                <string>sinaweibohd</string>
-                <string>sinaweibosso</string>
-                <string>sinaweibohdsso</string>
-                <string>weibosdk</string>
-                <string>weibosdk2.5</string>
-                <!--qq friend-->
                 <string>mqqOpensdkSSoLogin</string>
                 <string>mqqopensdkapiV2</string>
                 <string>mqqopensdkapiV3</string>
                 <string>wtloginmqq2</string>
                 <string>mqq</string>
                 <string>mqqapi</string>
+                <string>mqzoneopensdk</string>
+                <string>mqzoneopensdkapi</string>
+                <string>mqzoneopensdkapi19</string>
+                <string>mqqwpa</string>
+                <string>mqzone</string>
+                <string>sinaweibo</string>
+                <string>sinaweibohd</string>
+                <string>sinaweibosso</string>
+                <string>sinaweibohdsso</string>
+                <string>weibosdk</string>
+                <string>weibosdk2.5</string>
             </array>
         </config-file>
         <!--配置URL Scheme reference http://bbs.mob.com/thread-567-1-1.html-->
         <config-file target="*-Info.plist" parent="CFBundleURLTypes">
             <array>
                 <dict>
+                    <key>CFBundleTypeRole</key>
+                    <string>Editor</string>
+                    <key>CFBundleURLName</key>
+                    <string></string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>wx70ae63195d951329</string>
+                    </array>
+                </dict>
+                <dict>
+                    <key>CFBundleTypeRole</key>
+                    <string>Editor</string>
                     <key>CFBundleURLName</key>
                     <string></string>
                     <key>CFBundleURLSchemes</key>
                     <array>
                         <string>wb206863495</string>
-                        <string>wx70ae63195d951329</string>
+                    </array>
+                </dict>
+                <dict>
+                    <key>CFBundleTypeRole</key>
+                    <string>Editor</string>
+                    <key>CFBundleURLName</key>
+                    <string></string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
                         <string>fb107704292745179</string>
+                    </array>
+                </dict>
+                <dict>
+                    <key>CFBundleTypeRole</key>
+                    <string>Editor</string>
+                    <key>CFBundleURLName</key>
+                    <string></string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
                         <string>twitterkit-wGeZVOFRlt1YTyIBan2RSeK4e</string>
                     </array>
                 </dict>

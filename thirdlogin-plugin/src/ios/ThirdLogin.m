@@ -9,6 +9,14 @@
 #import <Cordova/CDVPlugin.h>
 #import <ShareSDK/ShareSDK.h>
 #import <MOBFoundation/MobSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import <ShareSDKExtension/SSEThirdPartyLoginHelper.h>
+
+//微信SDK头文件
+#import "WXApi.h"
+//新浪微博SDK头文件
+#import "WeiboSDK.h"
+//新浪微博SDK需要在项目Build Settings中的Other Linker Flags添加"-ObjC"
 
 @implementation ThirdLogin
 - (void)initSDK:(CDVInvokedUrlCommand*)args
@@ -41,12 +49,22 @@
          {
              if (state == SSDKResponseStateSuccess)
              {
-                 NSLog(@"uid=%@",user.uid);
-                 NSLog(@"%@",user.credential);
-                 NSLog(@"token=%@",user.credential.token);
-                 NSLog(@"nickname=%@",user.nickname);
+                 NSLog(@"***************************************************");
+                 NSLog(@"%@", user.uid);
+                 NSLog(@"%@", user.nickname);
+                 NSLog(@"%@", user.icon);
+                 NSLog(@"%lu", (unsigned long)user.gender);
+                 NSLog(@"%@", user.birthday);
+                 NSLog(@"%@", user.url);
+                 NSLog(@"***************************************************");
+                 CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                  messageAsDictionary:user.rawData];
+                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
              }else{
                  NSLog(@"%@",error);
+                 CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
+                                                 messageAsString:[NSString stringWithFormat:@"error"]];
+                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
              }
          }];
     }
