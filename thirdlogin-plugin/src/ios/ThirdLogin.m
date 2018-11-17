@@ -44,8 +44,7 @@
     }
     if(echo != nil){
         // SSDKPlatformTypeWechat SSDKPlatformTypeTwitter SSDKPlatformTypeSinaWeibo
-        [ShareSDK getUserInfo:platformType
-               onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
+        [ShareSDK getUserInfo:platformType onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
          {
              if (state == SSDKResponseStateSuccess)
              {
@@ -59,12 +58,12 @@
                  NSLog(@"***************************************************");
                  CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                   messageAsDictionary:user.rawData];
-                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                 [self.commandDelegate sendPluginResult:pluginResult callbackId:args.callbackId];
              }else{
                  NSLog(@"%@",error);
                  CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
                                                  messageAsString:[NSString stringWithFormat:@"error"]];
-                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                 [self.commandDelegate sendPluginResult:pluginResult callbackId:args.callbackId];
              }
          }];
     }

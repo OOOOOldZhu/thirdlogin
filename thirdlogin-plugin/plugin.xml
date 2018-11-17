@@ -192,6 +192,16 @@
         <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/FacebookMessengerConnector.framework" custom="true" />
         <!--twitter-->
         <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/TwitterConnector.framework" custom="true" />
+
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/AliSocialConnector.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/InstagramConnector.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/CopyConnector.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/GooglePlusConnector.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/LinkedInConnector.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/QQConnector.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/WhatsAppConnector.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/YouTubeConnector.framework" custom="true" />
+        <framework src="src/ios/shareSDK/ShareSDK/Support/PlatformConnector/TencentWeiboConnector.framework" custom="true" />
     </platform>
 
 </plugin>
