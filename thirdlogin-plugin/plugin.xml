@@ -86,6 +86,12 @@
         </config-file>
         <header-file src="src/ios/ThirdLogin.h"/>
         <source-file src="src/ios/ThirdLogin.m"/>
+        <config-file target="*-Info.plist" parent="MOBAppkey">
+            <string>28c038beb20d6</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="MOBAppSecret">
+            <string>e1d6dd766e21ac7fbdd25b91efd5f712</string>
+        </config-file>
         <!--添加Scheme白名单 reference url http://wiki.mob.com/ios9-%E5%AF%B9sharesdk%E7%9A%84%E5%BD%B1%E5%93%8D%EF%BC%88%E9%80%82%E9%85%8Dios-9%E5%BF%85%E8%AF%BB%EF%BC%89/-->
         <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
             <array>
