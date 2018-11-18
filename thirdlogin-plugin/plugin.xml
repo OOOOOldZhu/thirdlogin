@@ -62,7 +62,7 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:name="com.mob.tools.MobUIShell" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="keyboardHidden|orientation|screenSize" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden|adjustResize">
+            <activity android:name="com.mob.tools.MobUIShell" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="stateHidden|adjustResize">
                 <!-- 调用新浪原生SDK，需要注册的回调activity -->
                 <intent-filter>
                     <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />

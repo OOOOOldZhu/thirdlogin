@@ -115,7 +115,11 @@ public class ThirdLogin extends CordovaPlugin {
             // true不使用SSO授权，false使用SSO授权
             platform.SSOSetting(true);
             //获取用户资料
-            platform.showUser(null);
+            if(loginType.equalsIgnoreCase("wechat")){
+                platform.authorize(null);
+            }else {
+                platform.showUser(null);
+            }
         }
     }
 }
