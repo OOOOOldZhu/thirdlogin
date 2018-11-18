@@ -2,6 +2,7 @@ package com.microduino.mDesigner;
 
 import org.apache.cordova.CordovaPlugin;
 
+import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
@@ -44,7 +45,7 @@ public class ThirdLogin extends CordovaPlugin {
     }
 
     private void doLogin(String loginType, CallbackContext callbackContext) {
-        Platform  platform = ShareSDK.getPlatform(SinaWeibo.NAME);
+        Platform platform = ShareSDK.getPlatform(SinaWeibo.NAME);
         if (loginType.equalsIgnoreCase("facebook")) {
             platform = ShareSDK.getPlatform(Facebook.NAME);
         } else if (loginType.equalsIgnoreCase("weibo")) {
@@ -55,38 +56,66 @@ public class ThirdLogin extends CordovaPlugin {
             platform = ShareSDK.getPlatform(WechatMoments.NAME);
         }
         //回调信息，可以在这里获取基本的授权返回的信息，但是注意如果做提示和UI操作要传到主线程handler里去执行
-        if(platform!=null) {
+        if (platform != null) {
             platform.setPlatformActionListener(new PlatformActionListener() {
 
                 @Override
                 public void onComplete(Platform platform, int action, HashMap<String, Object> resp) {
                     //输出所有授权信息
                     //platform.getDb().exportData();
-                    if (action == Platform.ACTION_AUTHORIZING) {
+                    if (action == Platform.ACTION_AUTHORIZING && cordova.getActivity() != null) {
                         String json = platform.getDb().exportData();
-                        Log.i("zhu", "onComplete: "+json);
-                        callbackContext.success(json);
+                        Log.i("zhu", "onComplete: " + json);
+                        cordova.getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                callbackContext.success(json);
+                            }
+                        });
                     }
                 }
 
                 @Override
                 public void onError(Platform platform, int action, Throwable throwable) {
-                    if (action == Platform.ACTION_AUTHORIZING) {
-                        Log.i("zhu", "onError: "+throwable.getMessage());
-                        callbackContext.error(throwable.getMessage());
+                    if (action == Platform.ACTION_AUTHORIZING && cordova.getActivity() != null) {
+                        Log.i("zhu", "onError: " + throwable.getMessage());
+                        cordova.getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                callbackContext.error(throwable.getMessage());
+                            }
+                        });
                     }
                 }
 
                 @Override
                 public void onCancel(Platform platform, int action) {
-                    if (action == Platform.ACTION_AUTHORIZING) {
+                    if (action == Platform.ACTION_AUTHORIZING && cordova.getActivity() != null) {
                         Log.i("zhu", "onCancel: ");
-                        callbackContext.error("0");
+                        cordova.getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                callbackContext.error("0");
+                            }
+                        });
                     }
                 }
             });
-            //authorize与showUser单独调用一个即可
-            platform.authorize();//要功能不要数据，在监听oncomplete中不会返回用户数据
+            //判断指定平台是否已经完成授权
+            if (platform.isAuthValid() && cordova.getActivity() != null) {
+                String json = platform.getDb().exportData();
+                Log.i("zhu", "onComplete1 : " + json);
+                cordova.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        callbackContext.success(json);
+                    }
+                });
+            }
+            // true不使用SSO授权，false使用SSO授权
+            platform.SSOSetting(true);
+            //获取用户资料
+            platform.showUser(null);
         }
     }
 }

@@ -53,6 +53,7 @@
     <SinaWeibo
         Id="1"
         SortId="1"
+        AppKey="206863495"
         AppSecret="d64b22765519e722030f332d7f825ef5"
         RedirectUrl="https://www.microduino.cn/3rd/weibo/callback"
         ShareByAppClient="true"
