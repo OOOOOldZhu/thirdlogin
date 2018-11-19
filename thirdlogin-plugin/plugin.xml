@@ -114,6 +114,8 @@
                 <string>sinaweibohdsso</string>
                 <string>weibosdk</string>
                 <string>weibosdk2.5</string>
+                <string>fbauth2</string>
+                <string>fbauth</string>
             </array>
         </config-file>
         <!--配置URL Scheme reference http://bbs.mob.com/thread-567-1-1.html-->
