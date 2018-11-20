@@ -28,7 +28,22 @@
 {
     [self getUserBySDK:args];
 }
-
+-(void)doLogout:(CDVInvokedUrlCommand*)args{
+    SSDKPlatformType platformType;
+    platformType = SSDKPlatformTypeWechat;
+    [self sdkLogout:platformType];
+    platformType = SSDKPlatformTypeSinaWeibo;
+    [self sdkLogout:platformType];
+    platformType = SSDKPlatformTypeFacebook;
+    [self sdkLogout:platformType];
+    platformType = SSDKPlatformTypeTwitter;
+    [self sdkLogout:platformType];
+}
+-(void)sdkLogout:(SSDKPlatformType)platformType{
+    if([ShareSDK hasAuthorized:platformType]){
+        [ShareSDK cancelAuthorize:platformType];
+    }
+}
 -(void)getUserBySDK:(CDVInvokedUrlCommand*)args{
     CDVPluginResult* pluginResult = nil;
     NSString* echo =[args.arguments objectAtIndex:0];

@@ -41,9 +41,30 @@ public class ThirdLogin extends CordovaPlugin {
 
             return true;
         }
+        if ("doLogout".equals(action)) {
+            doLogout();
+            return true;
+        }
         return false;
     }
-
+    private void doLogout(){
+        Platform platform = ShareSDK.getPlatform(Facebook.NAME);
+        if (platform.isAuthValid()) {
+            platform.removeAccount(true);
+        }
+        platform = ShareSDK.getPlatform(SinaWeibo.NAME);
+        if (platform.isAuthValid()) {
+            platform.removeAccount(true);
+        }
+        platform = ShareSDK.getPlatform(Twitter.NAME);
+        if (platform.isAuthValid()) {
+            platform.removeAccount(true);
+        }
+        platform = ShareSDK.getPlatform(WechatMoments.NAME);
+        if (platform.isAuthValid()) {
+            platform.removeAccount(true);
+        }
+    }
     private void doLogin(String loginType, CallbackContext callbackContext) {
         Platform platform = ShareSDK.getPlatform(SinaWeibo.NAME);
         if (loginType.equalsIgnoreCase("facebook")) {
