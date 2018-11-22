@@ -23,6 +23,7 @@
                      target-dir="java/com/microduino/mDesigner/wxapi" />
         <source-file src="src/android/ShareSDK/assets/ShareSDK.xml" target-dir="assets" />
         <source-file src="src/android/strings.xml" target-dir="res/values" />
+        <source-file src="src/android/strings.xml" target-dir="res/values-en" />
         <source-file src="src/android/ShareSDK/src/cn/sharesdk/onekeyshare" target-dir="java/cn/sharesdk" />
         <source-file src="src/android/ShareSDK/res/values/ssdk_instapaper_strings.xml" target-dir="res/values" />
         <source-file src="src/android/ShareSDK/res/values/ssdk_oks_color_drawables.xml" target-dir="res/values" />
