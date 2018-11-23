@@ -50,6 +50,7 @@
         <lib-file src="src/android/ShareSDK/libs/ShareSDK-Youtube-3.3.0.jar" />
         <!--添加权限-->
         <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
             <uses-permission android:name="android.permission.GET_TASKS" />
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
