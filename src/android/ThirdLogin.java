@@ -99,11 +99,11 @@ public class ThirdLogin extends CordovaPlugin {
                 @Override
                 public void onError(Platform platform, int action, Throwable throwable) {
                     if (action == Platform.ACTION_AUTHORIZING && cordova.getActivity() != null) {
-                        Log.i("zhu", "onError: " + throwable.getMessage());
+                        Log.i("zhu", "onError: " + throwable.toString());
                         cordova.getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                callbackContext.error(throwable.getMessage());
+                                callbackContext.error(throwable.toString());
                             }
                         });
                     }
@@ -132,6 +132,7 @@ public class ThirdLogin extends CordovaPlugin {
                         callbackContext.success(json);
                     }
                 });
+                return;
             }
             // true不使用SSO授权，false使用SSO授权
             platform.SSOSetting(true);

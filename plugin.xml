@@ -23,8 +23,8 @@
         <source-file src="src/android/ShareSDK/src/com/microduino/mDesigner/wxapi/WXEntryActivity.java"
                      target-dir="java/com/microduino/mDesigner/wxapi" />
         <source-file src="src/android/ShareSDK/assets/ShareSDK.xml" target-dir="assets" />
-        <source-file src="src/android/strings.xml" target-dir="res/values" />
-        <source-file src="src/android/strings.xml" target-dir="res/values-en" />
+        <!--<source-file src="src/android/strings.xml" target-dir="res/values" />-->
+        <!--<source-file src="src/android/strings.xml" target-dir="res/values-en" />-->
         <source-file src="src/android/ShareSDK/src/cn/sharesdk/onekeyshare" target-dir="java/cn/sharesdk" />
         <source-file src="src/android/ShareSDK/res/values/ssdk_instapaper_strings.xml" target-dir="res/values" />
         <source-file src="src/android/ShareSDK/res/values/ssdk_oks_color_drawables.xml" target-dir="res/values" />
@@ -74,7 +74,7 @@
                 </intent-filter>
             </activity>
             <!--微信分享回调 WXEntryActivity是相对路径，所以需要获取当前项目的包名，动态copy到指定目录。通过cordova的hook完成-->
-            <activity android:name=".wxapi.WXEntryActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:screenOrientation="portrait" />
+            <activity android:name="com.microduino.mDesigner.wxapi.WXEntryActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:screenOrientation="portrait" />
             <meta-data android:name="Mob-AppKey" android:value="28c038beb20d6"/>
             <meta-data android:name="Mob-AppSecret" android:value="e1d6dd766e21ac7fbdd25b91efd5f712"/>
         </config-file>
