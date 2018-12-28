@@ -2,6 +2,7 @@ package com.microduino.mDesigner;
 
 import org.apache.cordova.CordovaPlugin;
 
+import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -65,7 +66,9 @@ public class ThirdLogin extends CordovaPlugin {
             platform.removeAccount(true);
         }
     }
+
     private void doLogin(String loginType, CallbackContext callbackContext) {
+        Activity activity = cordova.getActivity();
         Platform platform = ShareSDK.getPlatform(SinaWeibo.NAME);
         if (loginType.equalsIgnoreCase("facebook")) {
             platform = ShareSDK.getPlatform(Facebook.NAME);
@@ -84,10 +87,10 @@ public class ThirdLogin extends CordovaPlugin {
                 public void onComplete(Platform platform, int action, HashMap<String, Object> resp) {
                     //输出所有授权信息
                     //platform.getDb().exportData();
-                    if (action == Platform.ACTION_AUTHORIZING && cordova.getActivity() != null) {
+                    if ((action == Platform.ACTION_AUTHORIZING || action == Platform.ACTION_USER_INFOR) && activity != null) {
                         String json = platform.getDb().exportData();
                         Log.i("zhu", "onComplete: " + json);
-                        cordova.getActivity().runOnUiThread(new Runnable() {
+                        activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 callbackContext.success(json);
@@ -98,9 +101,9 @@ public class ThirdLogin extends CordovaPlugin {
 
                 @Override
                 public void onError(Platform platform, int action, Throwable throwable) {
-                    if (action == Platform.ACTION_AUTHORIZING && cordova.getActivity() != null) {
+                    if ((action == Platform.ACTION_AUTHORIZING || action == Platform.ACTION_USER_INFOR) && activity != null) {
                         Log.i("zhu", "onError: " + throwable.toString());
-                        cordova.getActivity().runOnUiThread(new Runnable() {
+                        activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 callbackContext.error(throwable.toString());
@@ -111,9 +114,9 @@ public class ThirdLogin extends CordovaPlugin {
 
                 @Override
                 public void onCancel(Platform platform, int action) {
-                    if (action == Platform.ACTION_AUTHORIZING && cordova.getActivity() != null) {
+                    if ((action == Platform.ACTION_AUTHORIZING || action == Platform.ACTION_USER_INFOR) && activity != null) {
                         Log.i("zhu", "onCancel: ");
-                        cordova.getActivity().runOnUiThread(new Runnable() {
+                        activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 callbackContext.error("0");
@@ -123,10 +126,10 @@ public class ThirdLogin extends CordovaPlugin {
                 }
             });
             //判断指定平台是否已经完成授权
-            if (platform.isAuthValid() && cordova.getActivity() != null) {
+            if (platform.isAuthValid() && activity != null) {
                 String json = platform.getDb().exportData();
                 Log.i("zhu", "onComplete1 : " + json);
-                cordova.getActivity().runOnUiThread(new Runnable() {
+                activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         callbackContext.success(json);
